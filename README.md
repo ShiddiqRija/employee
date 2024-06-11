@@ -6,6 +6,11 @@
 
 ## 🚀 [Demo →](https://test.shiddiqrija.com)
 
+```bash
+ email: admin@employee.com
+ password: password
+```
+
 <!-- Introduction Section -->
 
 ## 📖 Introduction
