@@ -12,8 +12,15 @@ import {
 import { Button } from "@/Components/ui/button";
 import { Label } from "@/Components/ui/label";
 import { Input } from "@/Components/ui/input";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/Components/ui/card";
 
-export default function DeleteUserForm({ className = "" }) {
+export default function DeleteUserForm() {
     const passwordInput = useRef();
 
     const {
@@ -39,79 +46,77 @@ export default function DeleteUserForm({ className = "" }) {
     };
 
     return (
-        <section className={`space-y-6 ${className}`}>
-            <header>
-                <h2 className="text-lg font-medium text-slate-950 dark:text-slate-50">
-                    Delete Account
-                </h2>
-
-                <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+        <Card>
+            <CardHeader>
+                <CardTitle>Delete Account</CardTitle>
+                <CardDescription>
                     Once your account is deleted, all of its resources and data
                     will be permanently deleted. Before deleting your account,
                     please download any data or information that you wish to
                     retain.
-                </p>
-            </header>
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <Button variant="destructive">Delete Account</Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-2xl">
+                        <DialogHeader>
+                            <DialogTitle className="text-slate-950 dark:text-slate-50">
+                                Are you sure you want to delete your account?
+                            </DialogTitle>
+                            <DialogDescription className="text-slate-600 dark:text-slate-400">
+                                Once your account is deleted, all of its
+                                resources and data will be permanently deleted.
+                                Please enter your password to confirm you would
+                                like to permanently delete your account.
+                            </DialogDescription>
+                        </DialogHeader>
 
-            <Dialog>
-                <DialogTrigger asChild>
-                    <Button variant="destructive">Delete Account</Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-2xl">
-                    <DialogHeader>
-                        <DialogTitle className="text-slate-950 dark:text-slate-50">
-                            Are you sure you want to delete your account?
-                        </DialogTitle>
-                        <DialogDescription className="text-slate-600 dark:text-slate-400">
-                            Once your account is deleted, all of its resources
-                            and data will be permanently deleted. Please enter
-                            your password to confirm you would like to
-                            permanently delete your account.
-                        </DialogDescription>
-                    </DialogHeader>
+                        <form onSubmit={deleteUser} className="mt-6">
+                            <div>
+                                <Label htmlFor="password" className="sr-only">
+                                    Password
+                                </Label>
 
-                    <form onSubmit={deleteUser} className="mt-6">
-                        <div>
-                            <Label htmlFor="password" className="sr-only">
-                                Password
-                            </Label>
+                                <Input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    ref={passwordInput}
+                                    value={data.password}
+                                    onChange={(e) =>
+                                        setData("password", e.target.value)
+                                    }
+                                    isFocused
+                                    placeholder="Password"
+                                />
 
-                            <Input
-                                id="password"
-                                type="password"
-                                name="password"
-                                ref={passwordInput}
-                                value={data.password}
-                                onChange={(e) =>
-                                    setData("password", e.target.value)
-                                }
-                                isFocused
-                                placeholder="Password"
-                            />
+                                <p className="mt-2 text-xs text-red-800">
+                                    {errors.password}
+                                </p>
+                            </div>
 
-                            <p className="mt-2 text-xs text-red-800">
-                                {errors.password}
-                            </p>
-                        </div>
+                            <div className="mt-6 flex justify-end">
+                                <DialogClose>
+                                    <Button type="button" variant="secondary">
+                                        Cancel
+                                    </Button>
+                                </DialogClose>
 
-                        <div className="mt-6 flex justify-end">
-                            <DialogClose>
-                                <Button type="button" variant="secondary">
-                                    Cancel
+                                <Button
+                                    variant="destructive"
+                                    className="ms-3"
+                                    disabled={processing}
+                                >
+                                    Delete Account
                                 </Button>
-                            </DialogClose>
-
-                            <Button
-                                variant="destructive"
-                                className="ms-3"
-                                disabled={processing}
-                            >
-                                Delete Account
-                            </Button>
-                        </div>
-                    </form>
-                </DialogContent>
-            </Dialog>
-        </section>
+                            </div>
+                        </form>
+                    </DialogContent>
+                </Dialog>
+            </CardContent>
+        </Card>
     );
 }
