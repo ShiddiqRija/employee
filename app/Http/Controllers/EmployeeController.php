@@ -54,8 +54,6 @@ class EmployeeController extends Controller
             EmployeeIdentityAddress::create([
                 'employee_id' => $employee->id,
                 'ktp' => $request->ktp,
-                'passport_number' => $request->passport_number,
-                'pasport_expiry_date' => $request->pasport_expiry_date,
                 'postal_code' => $request->postal_code,
                 'citizen_id_address' => $request->citizen_id_address,
                 'residential_address' => $request->idresidential_address,
@@ -74,7 +72,7 @@ class EmployeeController extends Controller
 
             DB::commit();
 
-            return Redirect::to('employee.show', [$employee->id])->with('message', 'Employee saved!');
+            return Redirect::route('employee.show', [$employee->id])->with('message', 'Employee saved!');
         } catch (\Exception $ex) {
             Log::error('Insert Employee data failed', ['exception' => $ex]);
 
@@ -116,16 +114,14 @@ class EmployeeController extends Controller
 
             $employee->update($validated);
 
-            $employee->indentity_address()->update([
+            $employee->identity_address()->update([
                 'ktp' => $request->ktp,
-                'passport_number' => $request->passport_number,
-                'pasport_expiry_date' => $request->pasport_expiry_date,
                 'postal_code' => $request->postal_code,
                 'citizen_id_address' => $request->citizen_id_address,
                 'residential_address' => $request->idresidential_address,
             ]);
 
-            $employee->employement()->update([
+            $employee->employment()->update([
                 'employee_number' => $request->employee_number,
                 'employment_status' => $request->employment_status,
                 'join_date' => $request->join_date,
@@ -137,7 +133,7 @@ class EmployeeController extends Controller
 
             DB::commit();
 
-            return Redirect::to('renewal.show', [$employee->id])->with('message', 'Employee updated!');
+            return Redirect::route('employee.show', [$employee->id])->with('message', 'Employee updated!');
         } catch (\Exception $ex) {
             Log::error('Update employee data failed', ['exception' => $ex]);
 
@@ -158,6 +154,8 @@ class EmployeeController extends Controller
             $employee->delete();
 
             DB::commit();
+
+            return Redirect::route('employee.index')->with('message', 'Employee deleted!');
         } catch (\Exception $ex) {
             Log::error('Delete employee data failed', ['exception' => $ex]);
 
