@@ -56,7 +56,7 @@ class EmployeeController extends Controller
                 'ktp' => $request->ktp,
                 'postal_code' => $request->postal_code,
                 'citizen_id_address' => $request->citizen_id_address,
-                'residential_address' => $request->idresidential_address,
+                'residential_address' => $request->residential_address,
             ]);
 
             EmployeeEmployment::create([
@@ -118,7 +118,7 @@ class EmployeeController extends Controller
                 'ktp' => $request->ktp,
                 'postal_code' => $request->postal_code,
                 'citizen_id_address' => $request->citizen_id_address,
-                'residential_address' => $request->idresidential_address,
+                'residential_address' => $request->residential_address,
             ]);
 
             $employee->employment()->update([
