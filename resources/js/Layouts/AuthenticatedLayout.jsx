@@ -12,7 +12,7 @@ export default function AuthenticatedLayout({ user, children }) {
     const [isCollapsed, setIsCollapsed] = useIsCollapsed();
 
     return (
-        <div className="relative h-full overflow-hidden bg-slate-50 dark:bg-slate-950">
+        <div className="relative h-full overflow-hidden bg-slate-200 dark:bg-slate-950">
             <Sidebar
                 isCollapsed={isCollapsed}
                 setIsCollapsed={setIsCollapsed}

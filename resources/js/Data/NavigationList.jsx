@@ -5,12 +5,14 @@ export const navigationList = [
         title: "Dashboard",
         label: "",
         href: "dashboard",
+        active: "dashboard",
         icon: <Home size={18} />,
     },
     {
         title: "Employees",
         label: "",
-        href: "profile.edit",
+        href: "employee.index",
+        active: "employee.*",
         icon: <Users size={18} />,
     },
     // Example with sub

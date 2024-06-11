@@ -32,7 +32,7 @@ const MainHeader = forwardRef(({ className, children, ...props }, ref) => (
     <div
         ref={ref}
         className={cn(
-            "flex h-[var(--header-height)] flex-none items-center gap-4 bg-slate-50 dark:bg-slate-950 p-4 md:px-8",
+            "flex h-[var(--header-height)] flex-none items-center gap-4 bg-slate-200 dark:bg-slate-950 p-4 md:px-8",
             className
         )}
         {...props}
