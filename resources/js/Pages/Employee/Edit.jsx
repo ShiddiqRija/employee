@@ -56,7 +56,7 @@ export default function Edit({ auth, employee }) {
         employment_status: employee.employment.employment_status,
         join_date: employee.employment.join_date,
         resign_date: employee.employment.resign_date,
-        branch: employee.employment.branch.split(' ').join('-'),
+        branch: employee.employment.branch.split(" ").join("-"),
         job_position: employee.employment.job_position,
         job_level: employee.employment.job_level,
     });
@@ -516,7 +516,7 @@ export default function Edit({ auth, employee }) {
                                         <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="residential_address">
-                                                    Redential address
+                                                    Residential address
                                                 </Label>
 
                                                 <Textarea
@@ -755,8 +755,7 @@ export default function Edit({ auth, employee }) {
 
                                                 <Select
                                                     defaultValue={data.branch}
-                                                    onValueChange={
-                                                        (e) => 
+                                                    onValueChange={(e) =>
                                                         setData("branch", e)
                                                     }
                                                     required

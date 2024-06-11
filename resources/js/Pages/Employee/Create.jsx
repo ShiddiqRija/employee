@@ -517,7 +517,7 @@ export default function Create({ auth }) {
                                         <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="residential_address">
-                                                    Redential address
+                                                    Residential address
                                                 </Label>
 
                                                 <Textarea
