@@ -98,10 +98,13 @@ or you can import sql file in root of the project into your mysql server
 Once all dependencies have been installed, you can run the local development server:
 
 ```bash
+ #For running laravel
+ $ php artisan serve
+ #For running react
  $ npm run dev
 ```
 
-### ⌨️ Development
+### 🖥️ Production
 
 After applying the changes, you can generate a build to test and/or deploy to your production environment.
 
