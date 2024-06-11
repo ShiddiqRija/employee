@@ -5,14 +5,14 @@ export const navigationList = [
         title: "Dashboard",
         label: "",
         href: "dashboard",
-        active: "dashboard",
+        active: "Dashboard",
         icon: <Home size={18} />,
     },
     {
         title: "Employees",
         label: "",
         href: "employee.index",
-        active: "employee.*",
+        active: "Employee",
         icon: <Users size={18} />,
     },
     // Example with sub
@@ -26,6 +26,7 @@ export const navigationList = [
     //             title: "Sign In (email + password)",
     //             label: "",
     //             href: "/sign-in",
+    //             active: "SignIn", //Base on Folder or Filename of Components
     //             icon: <IconHexagonNumber1 size={18} />,
     //         },
     //     ],

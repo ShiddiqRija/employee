@@ -1,5 +1,5 @@
 import { cn } from "@/Lib/Utils";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { Button } from "./ui/button";
 import {
     Tooltip,
@@ -75,20 +75,32 @@ export default function Navigation({
     );
 }
 
-function NavLink({ title, icon, label, href, closeNav, subLink = false }) {
+function NavLink({
+    title,
+    icon,
+    label,
+    href,
+    active,
+    closeNav,
+    subLink = false,
+}) {
+    const { component } = usePage();
+
     return (
         <Link
             href={route(href)}
             onClick={closeNav}
             className={cn(
                 buttonVariants({
-                    variant: route().current() === href ? "secondary" : "ghost",
+                    variant: component.startsWith(active)
+                        ? "secondary"
+                        : "ghost",
                     size: "sm",
                 }),
                 "h-12 justify-start text-wrap rounded-none px-6",
                 subLink && "h-10 w-full border-l border-l-slate-500 px-2"
             )}
-            aria-current={route().current() === href ? "page" : undefined}
+            aria-current={component.startsWith(active) ? "page" : undefined}
         >
             <div className="mr-2">{icon}</div>
             {title}
@@ -102,9 +114,12 @@ function NavLink({ title, icon, label, href, closeNav, subLink = false }) {
 }
 
 function NavLinkDropdown({ title, icon, label, sub, closeNav }) {
+    const { component } = usePage();
     // Open collapsible by default
     // if one of child element is active
-    const isChildActive = !!sub?.find((s) => route().current() === s.href);
+    const isChildActive = !!sub?.find(
+        (s) => route().current() === component.startsWith(s.active)
+    );
 
     return (
         <Collapsible defaultOpen={isChildActive}>
@@ -142,7 +157,9 @@ function NavLinkDropdown({ title, icon, label, sub, closeNav }) {
     );
 }
 
-function NavLinkIcon({ title, icon, label, href }) {
+function NavLinkIcon({ title, icon, label, href, active }) {
+    const { component } = usePage();
+
     return (
         <Tooltip delayDuration={0}>
             <TooltipTrigger asChild>
@@ -150,10 +167,9 @@ function NavLinkIcon({ title, icon, label, href }) {
                     href={route(href)}
                     className={cn(
                         buttonVariants({
-                            variant:
-                                route().current() === href
-                                    ? "secondary"
-                                    : "ghost",
+                            variant: component.startsWith(active)
+                                ? "secondary"
+                                : "ghost",
                             size: "icon",
                         }),
                         "h-12 w-12"
@@ -176,9 +192,12 @@ function NavLinkIcon({ title, icon, label, href }) {
 }
 
 function NavLinkIconDropdown({ title, icon, label, sub }) {
+    const { component } = usePage();
     // Open collapsible by default
     // if one of child element is active
-    const isChildActive = !!sub?.find((s) => route().current() === s.href);
+    const isChildActive = !!sub?.find(
+        (s) => route().current() === component.startsWith(s.active)
+    );
 
     return (
         <DropdownMenu>
@@ -215,12 +234,12 @@ function NavLinkIconDropdown({ title, icon, label, sub }) {
                     {title} {label ? `(${label})` : ""}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                {sub?.map(({ title, icon, label, href }) => (
+                {sub?.map(({ title, icon, label, href, active }) => (
                     <DropdownMenuItem key={`${title}-${href}`} asChild>
                         <Link
                             href={route(href)}
                             className={`${
-                                route().current() === href
+                                component.startsWith(active)
                                     ? "bg-slate-800 dark:bg-slate-300"
                                     : ""
                             }`}
