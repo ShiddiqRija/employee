@@ -39,7 +39,7 @@ class EmployeeRequest extends FormRequest
             'employment_status' => ['required', 'in:internship,probation,contract,permanent'],
             'join_date' => ['required', 'date'],
             'resign_date' => ['nullable', 'date'],
-            'branch' => ['required', 'in:head office, branch office'],
+            'branch' => ['required', 'in:head-office,branch-office'],
             'job_position' => ['required', 'string', 'max:100'],
             'job_level' => ['required', 'in:intern,staff,manager,director'],
         ];

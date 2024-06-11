@@ -1,18 +1,12 @@
-import {
-    MainBody,
-    MainHeader,
-    MainLayout,
-} from "@/Components/Partials/MainLayout";
+
 import Sidebar from "@/Components/Sidebar";
-import ThemeSwitch from "@/Components/ThemeSwitch";
-import UserNav from "@/Components/UserNav";
 import useIsCollapsed from "@/Hooks/useIsCollapsed";
 
 export default function AuthenticatedLayout({ user, children }) {
     const [isCollapsed, setIsCollapsed] = useIsCollapsed();
 
     return (
-        <div className="relative h-full overflow-hidden bg-slate-200 dark:bg-slate-950">
+        <div className="relative min-h-screen max-h-full overflow-hidden bg-slate-200 dark:bg-slate-950">
             <Sidebar
                 isCollapsed={isCollapsed}
                 setIsCollapsed={setIsCollapsed}

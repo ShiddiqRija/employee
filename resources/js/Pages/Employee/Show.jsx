@@ -43,11 +43,11 @@ export default function Show({ auth, employee }) {
                         <div className="max-w-7xl mx-auto mt-2">
                             <Card>
                                 <CardHeader>
-                                    <CardTitle className=" flex  justify-between items-center">
+                                    <CardTitle className="flex flex-col lg:flex-row lg:justify-between items-center">
                                         Employee data -{" "}
                                         {employee.data.first_name} ({" "}
                                         {employee.data.employee_number} )
-                                        <div className="flex justify-end">
+                                        <div className="flex justify-end mt-6 lg:mt-0">
                                             <Link
                                                 href={route("employee.edit", {
                                                     id: employee.data.id,
@@ -122,7 +122,7 @@ export default function Show({ auth, employee }) {
                                 </CardHeader>
 
                                 <CardContent>
-                                    <div className="flex flex-col gap-2 px-20 py-5">
+                                    <div className="flex flex-col gap-2 lg:px-20 py-5">
                                         <h3 className="text-xl font-bold">
                                             Personal Data
                                         </h3>
@@ -219,7 +219,7 @@ export default function Show({ auth, employee }) {
                                         </ul>
                                     </div>
 
-                                    <div className="flex flex-col gap-2 px-20 py-5">
+                                    <div className="flex flex-col gap-2 lg:px-20 py-5">
                                         <h3 className="text-xl font-bold">
                                             Identity & Address
                                         </h3>
@@ -277,7 +277,7 @@ export default function Show({ auth, employee }) {
                                         </ul>
                                     </div>
 
-                                    <div className="flex flex-col gap-2 px-20 py-5">
+                                    <div className="flex flex-col gap-2 lg:px-20 py-5">
                                         <h3 className="text-xl font-bold">
                                             Employment Data
                                         </h3>

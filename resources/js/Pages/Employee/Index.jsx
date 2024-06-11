@@ -30,9 +30,9 @@ export default function Index({ auth, employees }) {
                         <div className="max-w-7xl mx-auto ">
                             <Card>
                                 <CardHeader>
-                                    <CardTitle>Employees</CardTitle>
+                                    <CardTitle className="text-center lg:text-left">Employees</CardTitle>
                                 </CardHeader>
-                                <div className="flex justify-between px-6">
+                                <div className="flex justify-center lg:justify-end px-6 mb-5">
                                     <Link href={route("employee.create")}>
                                         <Button>
                                             <Plus size={18} className="mr-2" />{" "}
@@ -40,10 +40,10 @@ export default function Index({ auth, employees }) {
                                         </Button>
                                     </Link>
 
-                                    <Input
+                                    {/* <Input
                                         className="w-64"
                                         placeholder="Search..."
-                                    />
+                                    /> */}
                                 </div>
                                 <CardContent>
                                     <EmployeeList data={employees} />

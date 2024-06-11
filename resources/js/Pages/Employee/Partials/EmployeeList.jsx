@@ -25,7 +25,6 @@ import {
 } from "lucide-react";
 
 export default function EmployeeList({ data }) {
-    console.log(data);
     const items =
         data.data.length > 0 ? (
             data.data.map((item, index) => (

@@ -38,7 +38,6 @@ import { format, parse } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
 export default function Edit({ auth, employee }) {
-    console.log(employee);
     const { data, setData, put, errors, processing } = useForm({
         first_name: employee.first_name,
         last_name: employee.last_name,
@@ -57,12 +56,10 @@ export default function Edit({ auth, employee }) {
         employment_status: employee.employment.employment_status,
         join_date: employee.employment.join_date,
         resign_date: employee.employment.resign_date,
-        branch: employee.employment.branch,
+        branch: employee.employment.branch.split(' ').join('-'),
         job_position: employee.employment.job_position,
         job_level: employee.employment.job_level,
     });
-
-    console.log(data.branch.trim())
 
     const submit = (e) => {
         e.preventDefault();
@@ -72,7 +69,7 @@ export default function Edit({ auth, employee }) {
 
     return (
         <AuthenticatedLayout user={auth.user}>
-            <Head title="Create Employee" />
+            <Head title="Edit Employee" />
 
             <MainLayout>
                 <MainHeader>
@@ -87,9 +84,7 @@ export default function Edit({ auth, employee }) {
                             <form onSubmit={submit} className="space-y-6">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle>
-                                            Create new Employee
-                                        </CardTitle>
+                                        <CardTitle>Edit Employee</CardTitle>
                                     </CardHeader>
                                     <CardHeader>
                                         <h4 className="text-xl font-semibold leading-none tracking-tight">
@@ -101,7 +96,7 @@ export default function Edit({ auth, employee }) {
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent>
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="first_name">
                                                     First Name{" "}
@@ -155,7 +150,7 @@ export default function Edit({ auth, employee }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row  items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="email">
                                                     Email{" "}
@@ -205,7 +200,7 @@ export default function Edit({ auth, employee }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row  items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="place_of_birth">
                                                     Place of birth{" "}
@@ -291,7 +286,7 @@ export default function Edit({ auth, employee }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row  items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="gender">
                                                     Gender{" "}
@@ -376,7 +371,7 @@ export default function Edit({ auth, employee }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row  items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="religion">
                                                     Religion{" "}
@@ -442,7 +437,7 @@ export default function Edit({ auth, employee }) {
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent>
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="ktp">
                                                     KTP{" "}
@@ -490,7 +485,7 @@ export default function Edit({ auth, employee }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="citizen_id_address">
                                                     Citizen id address
@@ -499,7 +494,10 @@ export default function Edit({ auth, employee }) {
                                                 <Textarea
                                                     id="citizen_id_address"
                                                     value={
-                                                        data.citizen_id_address
+                                                        data.citizen_id_address ===
+                                                        null
+                                                            ? ""
+                                                            : data.citizen_id_address
                                                     }
                                                     onChange={(e) =>
                                                         setData(
@@ -515,7 +513,7 @@ export default function Edit({ auth, employee }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="residential_address">
                                                     Redential address
@@ -524,7 +522,10 @@ export default function Edit({ auth, employee }) {
                                                 <Textarea
                                                     id="residential_address"
                                                     value={
-                                                        data.residential_address
+                                                        data.residential_address ===
+                                                        null
+                                                            ? ""
+                                                            : data.residential_address
                                                     }
                                                     onChange={(e) =>
                                                         setData(
@@ -551,7 +552,7 @@ export default function Edit({ auth, employee }) {
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent>
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="employee_number">
                                                     Employment Number{" "}
@@ -623,7 +624,7 @@ export default function Edit({ auth, employee }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="join_date">
                                                     Join date{" "}
@@ -743,7 +744,7 @@ export default function Edit({ auth, employee }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="branch">
                                                     Branch{" "}
@@ -754,9 +755,9 @@ export default function Edit({ auth, employee }) {
 
                                                 <Select
                                                     defaultValue={data.branch}
-                                                    onValueChange={(e) =>
-                                                        console.log(e)
-                                                        // setData("branch", e)
+                                                    onValueChange={
+                                                        (e) => 
+                                                        setData("branch", e)
                                                     }
                                                     required
                                                 >
@@ -764,10 +765,10 @@ export default function Edit({ auth, employee }) {
                                                         <SelectValue placeholder="Branch" />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        <SelectItem value="head office">
+                                                        <SelectItem value="head-office">
                                                             Head Office
                                                         </SelectItem>
-                                                        <SelectItem value="branch office">
+                                                        <SelectItem value="branch-office">
                                                             Branch Office
                                                         </SelectItem>
                                                     </SelectContent>
@@ -779,7 +780,7 @@ export default function Edit({ auth, employee }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="job_position">
                                                     Job Position{" "}
@@ -850,7 +851,9 @@ export default function Edit({ auth, employee }) {
                                     </CardContent>
 
                                     <CardFooter>
-                                        <Button disabled={processing}>Update</Button>
+                                        <Button disabled={processing}>
+                                            Update
+                                        </Button>
                                     </CardFooter>
                                 </Card>
                             </form>

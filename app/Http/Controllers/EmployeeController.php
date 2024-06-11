@@ -65,7 +65,7 @@ class EmployeeController extends Controller
                 'employment_status' => $request->employment_status,
                 'join_date' => $request->join_date,
                 'resign_date' => $request->resign_date,
-                'branch' => $request->branch,
+                'branch' => str_replace('-', ' ',$request->branch),
                 'job_position' => $request->job_position,
                 'job_level' => $request->job_level,
             ]);
@@ -126,7 +126,7 @@ class EmployeeController extends Controller
                 'employment_status' => $request->employment_status,
                 'join_date' => $request->join_date,
                 'resign_date' => $request->resign_date,
-                'branch' => $request->branch,
+                'branch' => str_replace('-', ' ',$request->branch),
                 'job_position' => $request->job_position,
                 'job_level' => $request->job_level,
             ]);

@@ -56,7 +56,7 @@ export default function Create({ auth }) {
         employment_status: "permanent",
         join_date: "",
         resign_date: "",
-        branch: "",
+        branch: "head-office",
         job_position: "",
         job_level: "staff",
     });
@@ -97,7 +97,7 @@ export default function Create({ auth }) {
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent>
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="first_name">
                                                     First Name{" "}
@@ -151,7 +151,7 @@ export default function Create({ auth }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="email">
                                                     Email{" "}
@@ -201,7 +201,7 @@ export default function Create({ auth }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="place_of_birth">
                                                     Place of birth{" "}
@@ -287,7 +287,7 @@ export default function Create({ auth }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="gender">
                                                     Gender{" "}
@@ -375,7 +375,7 @@ export default function Create({ auth }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="religion">
                                                     Religion{" "}
@@ -441,7 +441,7 @@ export default function Create({ auth }) {
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent>
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="ktp">
                                                     KTP{" "}
@@ -489,7 +489,7 @@ export default function Create({ auth }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="citizen_id_address">
                                                     Citizen id address
@@ -514,7 +514,7 @@ export default function Create({ auth }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="residential_address">
                                                     Redential address
@@ -550,7 +550,7 @@ export default function Create({ auth }) {
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent>
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="employee_number">
                                                     Employment Number{" "}
@@ -622,7 +622,7 @@ export default function Create({ auth }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="join_date">
                                                     Join date{" "}
@@ -738,7 +738,7 @@ export default function Create({ auth }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="branch">
                                                     Branch{" "}
@@ -758,10 +758,10 @@ export default function Create({ auth }) {
                                                         <SelectValue placeholder="Branch" />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        <SelectItem value="head office">
+                                                        <SelectItem value="head-office">
                                                             Head Office
                                                         </SelectItem>
-                                                        <SelectItem value="branch office">
+                                                        <SelectItem value="branch-office">
                                                             Branch Office
                                                         </SelectItem>
                                                     </SelectContent>
@@ -773,7 +773,7 @@ export default function Create({ auth }) {
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-4">
+                                        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                                             <div className="w-full">
                                                 <Label htmlFor="job_position">
                                                     Job Position{" "}

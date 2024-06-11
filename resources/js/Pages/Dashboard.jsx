@@ -5,6 +5,7 @@ import {
 } from "@/Components/Partials/MainLayout";
 import ThemeSwitch from "@/Components/ThemeSwitch";
 import UserNav from "@/Components/UserNav";
+import { Card, CardContent } from "@/Components/ui/card";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 
@@ -22,12 +23,10 @@ export default function Dashboard({ auth }) {
                 </MainHeader>
                 <MainBody>
                     <div>
-                        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                            <div className="bg-slate-300 dark:bg-slate-700 overflow-hidden shadow-sm sm:rounded-lg">
-                                <div className="p-6 text-slate-950 dark:text-slate-50">
-                                    You're logged in!
-                                </div>
-                            </div>
+                        <div className="max-w-7xl mx-auto">
+                            <Card>
+                                <CardContent className="pt-6">You're logged in!</CardContent>
+                            </Card>
                         </div>
                     </div>
                 </MainBody>
