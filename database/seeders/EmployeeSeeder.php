@@ -18,7 +18,7 @@ class EmployeeSeeder extends Seeder
     {
         $faker = Factory::create('id_ID');
 
-        foreach (range(1, 200) as $index) {
+        foreach (range(1, 150) as $index) {
             $gender = $faker->randomElement(['male', 'female']);
             $firstName = $faker->firstName($gender);
             $lastName = $faker->lastName();
