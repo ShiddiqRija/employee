@@ -1,0 +1,681 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               8.0.30 - MySQL Community Server - GPL
+-- Server OS:                    Win64
+-- HeidiSQL Version:             12.1.0.6537
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- Dumping database structure for dev_employee
+DROP DATABASE IF EXISTS `dev_employee`;
+CREATE DATABASE IF NOT EXISTS `dev_employee` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `dev_employee`;
+
+-- Dumping structure for table dev_employee.cache
+DROP TABLE IF EXISTS `cache`;
+CREATE TABLE IF NOT EXISTS `cache` (
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expiration` int NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.cache: ~0 rows (approximately)
+
+-- Dumping structure for table dev_employee.cache_locks
+DROP TABLE IF EXISTS `cache_locks`;
+CREATE TABLE IF NOT EXISTS `cache_locks` (
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expiration` int NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.cache_locks: ~0 rows (approximately)
+
+-- Dumping structure for table dev_employee.employees
+DROP TABLE IF EXISTS `employees`;
+CREATE TABLE IF NOT EXISTS `employees` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `place_of_birth` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birth_date` date NOT NULL,
+  `gender` enum('male','female') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `marital_status` enum('single','married','widow','widower') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `religion` enum('islam','catholic','cristian','buddha','hindu','confucius','other') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.employees: ~151 rows (approximately)
+REPLACE INTO `employees` (`id`, `first_name`, `last_name`, `email`, `phone`, `place_of_birth`, `birth_date`, `gender`, `marital_status`, `religion`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'Shiddiq', 'Rija Syafendra', 'shiddiq.rija@outlook.com', '0812378123', 'Batam', '2024-06-10', 'male', 'single', 'islam', '2024-06-11 07:18:31', '2024-06-11 07:19:03', NULL),
+	(2, 'Ajiman', 'Hartati', 'ajiman.hartati@dummy.com', '(+62) 712 5741 0276', 'Gunungsitoli', '2011-09-27', 'male', 'widow', 'buddha', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(3, 'Ayu', 'Prayoga', 'ayu.prayoga@dummy.com', '0221 4331 2383', 'Kupang', '2002-12-22', 'female', 'married', 'buddha', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(4, 'Humaira', 'Riyanti', 'humaira.riyanti@dummy.com', '0592 5149 772', 'Cirebon', '2008-04-09', 'female', 'widower', 'hindu', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(5, 'Dalimin', 'Mayasari', 'dalimin.mayasari@dummy.com', '(+62) 586 5169 639', 'Sibolga', '1976-05-26', 'male', 'widow', 'buddha', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(6, 'Siska', 'Dongoran', 'siska.dongoran@dummy.com', '0881 080 417', 'Gunungsitoli', '2022-06-23', 'female', 'married', 'other', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(7, 'Warji', 'Lailasari', 'warji.lailasari@dummy.com', '(+62) 395 0680 4597', 'Bukittinggi', '2006-04-29', 'male', 'married', 'other', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(8, 'Karen', 'Kurniawan', 'karen.kurniawan@dummy.com', '0970 1024 3623', 'Administrasi Jakarta Timur', '1983-09-18', 'female', 'widow', 'hindu', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(9, 'Cornelia', 'Rahimah', 'cornelia.rahimah@dummy.com', '(+62) 895 156 945', 'Palopo', '1992-11-16', 'female', 'widower', 'other', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(10, 'Makara', 'Putra', 'makara.putra@dummy.com', '(+62) 968 3873 1540', 'Manado', '1999-03-14', 'male', 'widow', 'catholic', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(11, 'Violet', 'Suryono', 'violet.suryono@dummy.com', '(+62) 338 6646 960', 'Payakumbuh', '2015-08-17', 'female', 'widow', 'other', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(12, 'Titin', 'Saptono', 'titin.saptono@dummy.com', '(+62) 407 6035 2606', 'Palangka Raya', '2019-05-24', 'female', 'married', 'other', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(13, 'Mursinin', 'Sudiati', 'mursinin.sudiati@dummy.com', '(+62) 410 4916 6471', 'Yogyakarta', '1981-12-05', 'male', 'single', 'other', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(14, 'Paulin', 'Jailani', 'paulin.jailani@dummy.com', '0872 1469 445', 'Bekasi', '1992-11-16', 'female', 'widower', 'confucius', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(15, 'Zelda', 'Yuliarti', 'zelda.yuliarti@dummy.com', '(+62) 802 1794 9117', 'Tidore Kepulauan', '2012-09-14', 'female', 'widower', 'buddha', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(16, 'Zizi', 'Siregar', 'zizi.siregar@dummy.com', '0568 2035 140', 'Tegal', '1987-10-27', 'female', 'married', 'hindu', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(17, 'Intan', 'Maryati', 'intan.maryati@dummy.com', '(+62) 529 8113 212', 'Yogyakarta', '1971-10-12', 'female', 'widow', 'cristian', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(18, 'Fitriani', 'Halimah', 'fitriani.halimah@dummy.com', '(+62) 259 6139 026', 'Balikpapan', '1973-02-22', 'female', 'married', 'catholic', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(19, 'Kenzie', 'Waskita', 'kenzie.waskita@dummy.com', '0475 3380 1502', 'Tarakan', '1989-12-09', 'male', 'widow', 'confucius', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(20, 'Banawi', 'Widodo', 'banawi.widodo@dummy.com', '0389 3029 280', 'Surabaya', '1994-04-08', 'male', 'widow', 'other', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(21, 'Halima', 'Lestari', 'halima.lestari@dummy.com', '(+62) 960 8003 051', 'Malang', '1979-01-18', 'female', 'single', 'confucius', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(22, 'Karimah', 'Sitompul', 'karimah.sitompul@dummy.com', '0543 4465 0334', 'Tanjung Pinang', '2004-11-30', 'female', 'widow', 'islam', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(23, 'Artawan', 'Sihotang', 'artawan.sihotang@dummy.com', '(+62) 788 6188 5929', 'Prabumulih', '2017-11-11', 'male', 'married', 'hindu', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(24, 'Kamal', 'Novitasari', 'kamal.novitasari@dummy.com', '(+62) 23 0328 8596', 'Bandar Lampung', '1983-09-09', 'male', 'widow', 'islam', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(25, 'Gawati', 'Puspita', 'gawati.puspita@dummy.com', '0735 9509 0466', 'Salatiga', '2015-07-11', 'female', 'single', 'cristian', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(26, 'Mursinin', 'Wulandari', 'mursinin.wulandari@dummy.com', '0865 406 157', 'Batam', '2006-11-21', 'male', 'married', 'islam', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(27, 'Karman', 'Safitri', 'karman.safitri@dummy.com', '(+62) 948 9511 970', 'Serang', '2016-12-08', 'male', 'widow', 'hindu', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(28, 'Prayitna', 'Puspita', 'prayitna.puspita@dummy.com', '0412 1043 6126', 'Blitar', '2020-10-15', 'male', 'single', 'cristian', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(29, 'Ayu', 'Pudjiastuti', 'ayu.pudjiastuti@dummy.com', '(+62) 584 0245 106', 'Surakarta', '1998-02-01', 'female', 'widower', 'cristian', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(30, 'Prakosa', 'Habibi', 'prakosa.habibi@dummy.com', '0801 2325 3404', 'Tasikmalaya', '1978-10-27', 'male', 'widower', 'confucius', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(31, 'Kanda', 'Wijaya', 'kanda.wijaya@dummy.com', '(+62) 903 6443 514', 'Madiun', '2019-08-14', 'male', 'widow', 'islam', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(32, 'Purwadi', 'Nashiruddin', 'purwadi.nashiruddin@dummy.com', '(+62) 616 8860 2904', 'Dumai', '1992-02-15', 'male', 'single', 'cristian', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(33, 'Zamira', 'Yuliarti', 'zamira.yuliarti@dummy.com', '(+62) 810 680 374', 'Batu', '1981-06-21', 'female', 'single', 'cristian', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(34, 'Irsad', 'Mulyani', 'irsad.mulyani@dummy.com', '0952 5809 008', 'Cilegon', '2013-09-25', 'male', 'widower', 'catholic', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(35, 'Gaiman', 'Permadi', 'gaiman.permadi@dummy.com', '(+62) 996 8176 460', 'Ternate', '1979-10-12', 'male', 'married', 'confucius', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(36, 'Bakianto', 'Sihombing', 'bakianto.sihombing@dummy.com', '0367 0800 836', 'Palembang', '1973-12-19', 'male', 'single', 'catholic', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(37, 'Cici', 'Pratiwi', 'cici.pratiwi@dummy.com', '(+62) 279 1704 9604', 'Tarakan', '1995-04-17', 'female', 'widow', 'cristian', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(38, 'Ulva', 'Saefullah', 'ulva.saefullah@dummy.com', '0462 9634 341', 'Tangerang Selatan', '1978-12-04', 'female', 'married', 'hindu', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(39, 'Gadang', 'Adriansyah', 'gadang.adriansyah@dummy.com', '0203 2814 0264', 'Gorontalo', '1999-10-09', 'male', 'widower', 'hindu', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(40, 'Laras', 'Ardianto', 'laras.ardianto@dummy.com', '(+62) 873 434 769', 'Ternate', '2021-05-01', 'female', 'single', 'confucius', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(41, 'Nrima', 'Narpati', 'nrima.narpati@dummy.com', '(+62) 478 0406 8906', 'Pekanbaru', '1972-08-10', 'male', 'single', 'islam', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(42, 'Caraka', 'Marpaung', 'caraka.marpaung@dummy.com', '(+62) 439 9063 8678', 'Cirebon', '2016-05-15', 'male', 'widow', 'other', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(43, 'Eka', 'Narpati', 'eka.narpati@dummy.com', '0236 2747 411', 'Ternate', '2023-12-26', 'female', 'widow', 'other', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(44, 'Marsito', 'Novitasari', 'marsito.novitasari@dummy.com', '(+62) 654 5272 285', 'Semarang', '1999-10-16', 'male', 'widow', 'cristian', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(45, 'Ajiman', 'Simbolon', 'ajiman.simbolon@dummy.com', '(+62) 21 7043 422', 'Administrasi Jakarta Barat', '1976-04-28', 'male', 'widower', 'hindu', '2024-06-11 07:19:40', '2024-06-11 07:19:40', NULL),
+	(46, 'Ina', 'Wijaya', 'ina.wijaya@dummy.com', '0453 9979 393', 'Padang', '1976-08-21', 'female', 'widow', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(47, 'Almira', 'Susanti', 'almira.susanti@dummy.com', '0389 7341 687', 'Bandung', '1997-09-18', 'female', 'married', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(48, 'Prayogo', 'Natsir', 'prayogo.natsir@dummy.com', '(+62) 649 6555 521', 'Semarang', '1972-11-05', 'male', 'married', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(49, 'Samsul', 'Usada', 'samsul.usada@dummy.com', '0563 4464 2104', 'Palopo', '2015-09-22', 'male', 'widower', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(50, 'Utama', 'Pradipta', 'utama.pradipta@dummy.com', '(+62) 498 5506 2510', 'Gunungsitoli', '1998-05-01', 'male', 'widower', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(51, 'Kayun', 'Maheswara', 'kayun.maheswara@dummy.com', '(+62) 908 0815 557', 'Tomohon', '1971-06-15', 'male', 'single', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(52, 'Artawan', 'Mansur', 'artawan.mansur@dummy.com', '0203 3455 792', 'Bontang', '2009-09-09', 'male', 'married', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(53, 'Nyoman', 'Laksita', 'nyoman.laksita@dummy.com', '0499 0853 7728', 'Kediri', '1996-01-04', 'male', 'widower', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(54, 'Baktiono', 'Hastuti', 'baktiono.hastuti@dummy.com', '(+62) 460 8036 2526', 'Bima', '1990-12-02', 'male', 'single', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(55, 'Laila', 'Prasetya', 'laila.prasetya@dummy.com', '(+62) 747 5015 697', 'Bau-Bau', '1978-02-11', 'female', 'widow', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(56, 'Laswi', 'Suartini', 'laswi.suartini@dummy.com', '0589 6744 9569', 'Bau-Bau', '2021-02-09', 'male', 'single', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(57, 'Violet', 'Suartini', 'violet.suartini@dummy.com', '0997 0096 302', 'Malang', '2000-10-20', 'female', 'single', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(58, 'Humaira', 'Ramadan', 'humaira.ramadan@dummy.com', '(+62) 574 6091 6079', 'Ternate', '2015-03-30', 'female', 'single', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(59, 'Yuliana', 'Haryanti', 'yuliana.haryanti@dummy.com', '0298 9038 3419', 'Bekasi', '1995-12-04', 'female', 'single', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(60, 'Sarah', 'Nasyidah', 'sarah.nasyidah@dummy.com', '0804 9126 5997', 'Lubuklinggau', '2015-03-03', 'female', 'widower', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(61, 'Cornelia', 'Widiastuti', 'cornelia.widiastuti@dummy.com', '(+62) 978 3760 5528', 'Lhokseumawe', '1996-12-22', 'female', 'single', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(62, 'Intan', 'Laksita', 'intan.laksita@dummy.com', '0687 3583 556', 'Administrasi Jakarta Pusat', '1996-02-17', 'female', 'widower', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(63, 'Vivi', 'Suryatmi', 'vivi.suryatmi@dummy.com', '(+62) 618 0602 2317', 'Cimahi', '1979-02-07', 'female', 'widow', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(64, 'Hasna', 'Waskita', 'hasna.waskita@dummy.com', '0203 4290 971', 'Gorontalo', '2020-11-03', 'female', 'single', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(65, 'Adika', 'Nababan', 'adika.nababan@dummy.com', '0792 5797 9180', 'Tidore Kepulauan', '2004-12-16', 'male', 'widow', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(66, 'Warta', 'Wijayanti', 'warta.wijayanti@dummy.com', '(+62) 594 1135 2708', 'Mataram', '2002-03-23', 'male', 'widow', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(67, 'Estiono', 'Novitasari', 'estiono.novitasari@dummy.com', '(+62) 681 2356 745', 'Administrasi Jakarta Selatan', '1990-01-23', 'male', 'widow', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(68, 'Rangga', 'Hutagalung', 'rangga.hutagalung@dummy.com', '(+62) 898 639 842', 'Cilegon', '2020-04-12', 'male', 'widower', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(69, 'Intan', 'Mandala', 'intan.mandala@dummy.com', '0902 8969 857', 'Subulussalam', '1979-08-07', 'female', 'single', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(70, 'Nabila', 'Aryani', 'nabila.aryani@dummy.com', '0921 3559 823', 'Jayapura', '2009-11-09', 'female', 'widow', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(71, 'Icha', 'Lailasari', 'icha.lailasari@dummy.com', '0303 8489 3205', 'Pagar Alam', '2008-11-21', 'female', 'widower', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(72, 'Jayadi', 'Marpaung', 'jayadi.marpaung@dummy.com', '0722 2878 968', 'Gunungsitoli', '2024-05-29', 'male', 'single', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(73, 'Ami', 'Padmasari', 'ami.padmasari@dummy.com', '(+62) 882 794 277', 'Semarang', '1981-04-25', 'female', 'widower', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(74, 'Surya', 'Santoso', 'surya.santoso@dummy.com', '0706 1665 2950', 'Sungai Penuh', '2015-02-06', 'male', 'married', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(75, 'Kamidin', 'Usada', 'kamidin.usada@dummy.com', '(+62) 22 9482 1188', 'Langsa', '1995-10-05', 'male', 'married', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(76, 'Cawisadi', 'Pangestu', 'cawisadi.pangestu@dummy.com', '(+62) 21 4767 439', 'Jambi', '1997-10-02', 'male', 'single', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(77, 'Najwa', 'Hartati', 'najwa.hartati@dummy.com', '(+62) 737 4767 004', 'Langsa', '1982-10-09', 'female', 'single', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(78, 'Mursinin', 'Natsir', 'mursinin.natsir@dummy.com', '0639 0603 8969', 'Administrasi Jakarta Barat', '2020-10-11', 'male', 'widow', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(79, 'Janet', 'Sihotang', 'janet.sihotang@dummy.com', '(+62) 776 7183 4161', 'Denpasar', '2021-04-27', 'female', 'widow', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(80, 'Cemeti', 'Siregar', 'cemeti.siregar@dummy.com', '0872 612 764', 'Denpasar', '1985-03-05', 'male', 'widower', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(81, 'Emas', 'Mayasari', 'emas.mayasari@dummy.com', '(+62) 367 3581 1245', 'Jayapura', '1987-12-06', 'male', 'widow', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(82, 'Cecep', 'Permadi', 'cecep.permadi@dummy.com', '020 3116 083', 'Bogor', '2013-01-25', 'male', 'married', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(83, 'Oskar', 'Hasanah', 'oskar.hasanah@dummy.com', '(+62) 28 2485 837', 'Batu', '2014-07-19', 'male', 'single', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(84, 'Maimunah', 'Siregar', 'maimunah.siregar@dummy.com', '0933 4388 0638', 'Jambi', '2019-04-16', 'female', 'married', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(85, 'Rahmi', 'Habibi', 'rahmi.habibi@dummy.com', '0836 410 439', 'Jayapura', '2000-04-13', 'female', 'married', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(86, 'Cakrawala', 'Prabowo', 'cakrawala.prabowo@dummy.com', '0902 4263 153', 'Bau-Bau', '2006-10-16', 'male', 'single', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(87, 'Vanya', 'Kurniawan', 'vanya.kurniawan@dummy.com', '(+62) 796 5602 2852', 'Ambon', '1977-05-21', 'female', 'single', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(88, 'Damu', 'Namaga', 'damu.namaga@dummy.com', '(+62) 539 5764 6016', 'Madiun', '1976-01-30', 'male', 'widow', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(89, 'Pangestu', 'Maryati', 'pangestu.maryati@dummy.com', '(+62) 253 1987 472', 'Langsa', '2005-12-27', 'male', 'single', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(90, 'Jessica', 'Nasyidah', 'jessica.nasyidah@dummy.com', '(+62) 666 5374 4987', 'Pekanbaru', '2004-11-13', 'female', 'widower', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(91, 'Panca', 'Astuti', 'panca.astuti@dummy.com', '(+62) 555 1659 5827', 'Ternate', '1974-10-22', 'male', 'single', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(92, 'Nova', 'Marpaung', 'nova.marpaung@dummy.com', '(+62) 29 4355 678', 'Tasikmalaya', '1974-11-05', 'female', 'single', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(93, 'Rahayu', 'Zulaika', 'rahayu.zulaika@dummy.com', '(+62) 863 3307 117', 'Mataram', '2009-08-28', 'female', 'widower', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(94, 'Cakrawala', 'Situmorang', 'cakrawala.situmorang@dummy.com', '(+62) 582 0092 069', 'Padangpanjang', '1991-05-26', 'male', 'married', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(95, 'Ikin', 'Dongoran', 'ikin.dongoran@dummy.com', '(+62) 27 6325 6700', 'Solok', '2008-10-29', 'male', 'married', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(96, 'Ida', 'Yuliarti', 'ida.yuliarti@dummy.com', '(+62) 927 0536 8686', 'Magelang', '1981-12-12', 'female', 'single', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(97, 'Cemani', 'Nuraini', 'cemani.nuraini@dummy.com', '0228 2370 2572', 'Makassar', '1993-01-10', 'male', 'single', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(98, 'Karma', 'Oktaviani', 'karma.oktaviani@dummy.com', '(+62) 821 734 303', 'Palembang', '1980-07-24', 'male', 'widow', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(99, 'Ulya', 'Uyainah', 'ulya.uyainah@dummy.com', '0679 4997 909', 'Banda Aceh', '1998-06-15', 'female', 'widow', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(100, 'Tri', 'Wijaya', 'tri.wijaya@dummy.com', '0892 629 980', 'Ambon', '2012-04-12', 'male', 'widower', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(101, 'Gandi', 'Hartati', 'gandi.hartati@dummy.com', '(+62) 454 2512 443', 'Cirebon', '2023-04-27', 'male', 'widower', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(102, 'Mahfud', 'Widiastuti', 'mahfud.widiastuti@dummy.com', '0522 0949 551', 'Tidore Kepulauan', '1984-12-12', 'male', 'single', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(103, 'Lanjar', 'Padmasari', 'lanjar.padmasari@dummy.com', '0210 8766 003', 'Ternate', '1990-05-16', 'male', 'widow', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(104, 'Sakti', 'Sirait', 'sakti.sirait@dummy.com', '(+62) 29 3985 9159', 'Makassar', '1970-08-24', 'male', 'married', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(105, 'Kasusra', 'Widiastuti', 'kasusra.widiastuti@dummy.com', '0890 5548 979', 'Pekalongan', '1990-02-27', 'male', 'widow', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(106, 'Johan', 'Waskita', 'johan.waskita@dummy.com', '(+62) 895 2526 4770', 'Bengkulu', '2024-03-13', 'male', 'single', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(107, 'Darijan', 'Megantara', 'darijan.megantara@dummy.com', '0337 3350 814', 'Bandung', '2001-09-15', 'male', 'widower', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(108, 'Yulia', 'Sudiati', 'yulia.sudiati@dummy.com', '(+62) 23 8436 5910', 'Bitung', '2009-06-13', 'female', 'widow', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(109, 'Edi', 'Nurdiyanti', 'edi.nurdiyanti@dummy.com', '(+62) 501 4012 717', 'Palu', '2018-05-06', 'male', 'single', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(110, 'Siti', 'Riyanti', 'siti.riyanti@dummy.com', '0635 9007 8652', 'Ternate', '1975-08-07', 'female', 'widow', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(111, 'Tantri', 'Uyainah', 'tantri.uyainah@dummy.com', '(+62) 275 8738 7208', 'Bima', '1998-06-14', 'female', 'married', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(112, 'Damar', 'Mulyani', 'damar.mulyani@dummy.com', '(+62) 814 6718 9094', 'Depok', '2021-11-19', 'male', 'widow', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(113, 'Kanda', 'Sihotang', 'kanda.sihotang@dummy.com', '0831 1503 112', 'Prabumulih', '1981-07-19', 'male', 'single', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(114, 'Daryani', 'Sitorus', 'daryani.sitorus@dummy.com', '(+62) 458 4054 931', 'Jayapura', '1975-01-12', 'male', 'married', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(115, 'Samiah', 'Rahayu', 'samiah.rahayu@dummy.com', '0895 8620 7160', 'Cirebon', '1995-03-23', 'female', 'widow', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(116, 'Endra', 'Handayani', 'endra.handayani@dummy.com', '(+62) 654 6576 406', 'Palu', '2012-04-02', 'male', 'married', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(117, 'Yunita', 'Susanti', 'yunita.susanti@dummy.com', '0552 4843 897', 'Bogor', '1971-03-04', 'female', 'widow', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(118, 'Emong', 'Sudiati', 'emong.sudiati@dummy.com', '(+62) 28 1288 6584', 'Cilegon', '2008-07-15', 'male', 'widow', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(119, 'Galur', 'Yuliarti', 'galur.yuliarti@dummy.com', '(+62) 809 3768 946', 'Banjarbaru', '2007-05-30', 'male', 'widower', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(120, 'Bakti', 'Situmorang', 'bakti.situmorang@dummy.com', '0460 7176 035', 'Tangerang', '1989-02-22', 'male', 'married', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(121, 'Queen', 'Namaga', 'queen.namaga@dummy.com', '(+62) 722 4494 6650', 'Tegal', '1989-01-15', 'female', 'single', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(122, 'Darijan', 'Tamba', 'darijan.tamba@dummy.com', '0850 8778 264', 'Parepare', '2004-04-07', 'male', 'widow', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(123, 'Ajiono', 'Saptono', 'ajiono.saptono@dummy.com', '0404 8378 4098', 'Bitung', '1973-09-01', 'male', 'widower', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(124, 'Hairyanto', 'Nashiruddin', 'hairyanto.nashiruddin@dummy.com', '0252 6438 4956', 'Bau-Bau', '1971-11-29', 'male', 'widow', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(125, 'Jail', 'Oktaviani', 'jail.oktaviani@dummy.com', '0826 0511 970', 'Sorong', '1980-02-19', 'male', 'widow', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(126, 'Naradi', 'Dabukke', 'naradi.dabukke@dummy.com', '0400 7294 1643', 'Bogor', '1995-10-11', 'male', 'widower', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(127, 'Xanana', 'Habibi', 'xanana.habibi@dummy.com', '0756 9549 180', 'Banjarmasin', '1982-03-22', 'male', 'married', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(128, 'Ade', 'Santoso', 'ade.santoso@dummy.com', '(+62) 883 698 791', 'Palangka Raya', '1979-01-06', 'female', 'widow', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(129, 'Sarah', 'Hartati', 'sarah.hartati@dummy.com', '(+62) 986 2272 913', 'Administrasi Jakarta Pusat', '2011-12-17', 'female', 'single', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(130, 'Reza', 'Samosir', 'reza.samosir@dummy.com', '(+62) 545 7766 131', 'Salatiga', '2012-03-17', 'male', 'married', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(131, 'Mala', 'Wacana', 'mala.wacana@dummy.com', '(+62) 801 9111 2877', 'Jayapura', '2015-02-21', 'female', 'single', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(132, 'Virman', 'Sitorus', 'virman.sitorus@dummy.com', '0732 6746 6893', 'Lhokseumawe', '1985-08-05', 'male', 'widower', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(133, 'Dipa', 'Oktaviani', 'dipa.oktaviani@dummy.com', '024 8187 480', 'Kendari', '1981-04-26', 'male', 'widow', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(134, 'Cindy', 'Wahyuni', 'cindy.wahyuni@dummy.com', '0978 6432 106', 'Palu', '2018-04-17', 'female', 'married', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(135, 'Kamaria', 'Uwais', 'kamaria.uwais@dummy.com', '0415 5446 614', 'Palangka Raya', '1996-02-19', 'female', 'married', 'hindu', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(136, 'Dalima', 'Sirait', 'dalima.sirait@dummy.com', '0719 9698 746', 'Tidore Kepulauan', '2015-11-08', 'female', 'married', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(137, 'Aris', 'Wibowo', 'aris.wibowo@dummy.com', '0495 7550 7946', 'Parepare', '1995-09-01', 'male', 'widow', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(138, 'Nadia', 'Siregar', 'nadia.siregar@dummy.com', '0294 7010 871', 'Singkawang', '2022-01-13', 'female', 'married', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(139, 'Pia', 'Hartati', 'pia.hartati@dummy.com', '0685 3874 709', 'Bandar Lampung', '1976-08-09', 'female', 'single', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(140, 'Puput', 'Kuswoyo', 'puput.kuswoyo@dummy.com', '0207 8503 627', 'Administrasi Jakarta Barat', '2011-07-21', 'female', 'widower', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(141, 'Sabri', 'Rahimah', 'sabri.rahimah@dummy.com', '(+62) 770 7312 9211', 'Sukabumi', '1980-11-09', 'male', 'married', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(142, 'Darimin', 'Dongoran', 'darimin.dongoran@dummy.com', '(+62) 653 4657 0137', 'Lhokseumawe', '2003-04-26', 'male', 'single', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(143, 'Tami', 'Usada', 'tami.usada@dummy.com', '(+62) 864 388 724', 'Cilegon', '1984-02-06', 'female', 'single', 'confucius', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(144, 'Indra', 'Saefullah', 'indra.saefullah@dummy.com', '(+62) 587 9797 5831', 'Administrasi Jakarta Utara', '2023-07-15', 'male', 'widower', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(145, 'Laswi', 'Purwanti', 'laswi.purwanti@dummy.com', '022 1020 540', 'Yogyakarta', '2017-04-14', 'male', 'widow', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(146, 'Taufan', 'Situmorang', 'taufan.situmorang@dummy.com', '0935 9502 087', 'Solok', '1989-03-06', 'male', 'widower', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(147, 'Humaira', 'Prakasa', 'humaira.prakasa@dummy.com', '0321 8888 3555', 'Tegal', '1999-02-21', 'female', 'widow', 'other', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(148, 'Cemani', 'Hutapea', 'cemani.hutapea@dummy.com', '0405 1228 394', 'Magelang', '1995-06-04', 'male', 'single', 'cristian', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(149, 'Liman', 'Putra', 'liman.putra@dummy.com', '0633 2285 6225', 'Probolinggo', '1997-02-25', 'male', 'single', 'catholic', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(150, 'Gandewa', 'Habibi', 'gandewa.habibi@dummy.com', '(+62) 732 3967 2243', 'Bau-Bau', '1996-01-14', 'male', 'widow', 'islam', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL),
+	(151, 'Puji', 'Tamba', 'puji.tamba@dummy.com', '0735 5753 261', 'Payakumbuh', '2011-05-31', 'female', 'married', 'buddha', '2024-06-11 07:19:41', '2024-06-11 07:19:41', NULL);
+
+-- Dumping structure for table dev_employee.employee_employments
+DROP TABLE IF EXISTS `employee_employments`;
+CREATE TABLE IF NOT EXISTS `employee_employments` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `employee_id` bigint unsigned NOT NULL,
+  `employee_number` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `employment_status` enum('internship','probation','contract','permanent') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `join_date` date NOT NULL,
+  `resign_date` date DEFAULT NULL,
+  `branch` enum('head office','branch office') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_position` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_level` enum('intern','staff','manager','director') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `employee_employments_employee_id_foreign` (`employee_id`),
+  CONSTRAINT `employee_employments_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.employee_employments: ~151 rows (approximately)
+REPLACE INTO `employee_employments` (`id`, `employee_id`, `employee_number`, `employment_status`, `join_date`, `resign_date`, `branch`, `job_position`, `job_level`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'EMP-1', 'permanent', '2024-06-12', NULL, 'head office', 'IT', 'staff', '2024-06-11 07:18:31', '2024-06-11 07:19:03'),
+	(2, 2, 'EMP-2', 'internship', '2017-08-11', NULL, 'head office', 'Tukang Listrik', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(3, 3, 'EMP-3', 'permanent', '2026-03-18', NULL, 'branch office', 'Perdagangan', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(4, 4, 'EMP-4', 'internship', '2020-04-14', NULL, 'branch office', 'Tentara Nasional Indonesia (TNI)', 'intern', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(5, 5, 'EMP-5', 'internship', '2015-03-20', NULL, 'branch office', 'Pendeta', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(6, 6, 'EMP-6', 'internship', '2016-09-26', NULL, 'head office', 'Sopir', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(7, 7, 'EMP-7', 'internship', '2019-04-30', NULL, 'branch office', 'Nahkoda', 'intern', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(8, 8, 'EMP-8', 'probation', '2023-10-24', NULL, 'head office', 'Transportasi', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(9, 9, 'EMP-9', 'internship', '2021-10-11', NULL, 'branch office', 'Perawat', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(10, 10, 'EMP-10', 'permanent', '2017-07-04', NULL, 'branch office', 'Mekanik', 'staff', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(11, 11, 'EMP-11', 'permanent', '2021-03-08', NULL, 'head office', 'Juru Masak', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(12, 12, 'EMP-12', 'probation', '2019-01-19', NULL, 'head office', 'Penyelam', 'staff', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(13, 13, 'EMP-13', 'permanent', '2024-01-19', NULL, 'branch office', 'Penata Rambut', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(14, 14, 'EMP-14', 'contract', '2019-02-12', NULL, 'branch office', 'Wiraswasta', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(15, 15, 'EMP-15', 'probation', '2020-09-12', NULL, 'branch office', 'Penata Busana', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(16, 16, 'EMP-16', 'probation', '2024-06-27', NULL, 'head office', 'Mengurus Rumah Tangga', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(17, 17, 'EMP-17', 'probation', '2020-04-23', NULL, 'branch office', 'Konstruksi', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(18, 18, 'EMP-18', 'contract', '2025-03-24', NULL, 'head office', 'Tukang Cukur', 'intern', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(19, 19, 'EMP-19', 'internship', '2022-05-07', NULL, 'branch office', 'Penata Rias', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(20, 20, 'EMP-20', 'contract', '2015-05-06', NULL, 'branch office', 'Penata Rambut', 'intern', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(21, 21, 'EMP-21', 'internship', '2015-09-13', NULL, 'branch office', 'Pramusaji', 'staff', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(22, 22, 'EMP-22', 'probation', '2020-06-25', NULL, 'head office', 'Presiden', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(23, 23, 'EMP-23', 'contract', '2025-01-02', NULL, 'branch office', 'Dosen', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(24, 24, 'EMP-24', 'contract', '2023-11-06', NULL, 'head office', 'Belum / Tidak Bekerja', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(25, 25, 'EMP-25', 'probation', '2014-10-30', NULL, 'branch office', 'Paraji', 'staff', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(26, 26, 'EMP-26', 'internship', '2025-01-12', NULL, 'branch office', 'Mekanik', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(27, 27, 'EMP-27', 'contract', '2023-08-23', NULL, 'branch office', 'Pramugari', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(28, 28, 'EMP-28', 'permanent', '2024-10-28', NULL, 'head office', 'Pramugari', 'staff', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(29, 29, 'EMP-29', 'internship', '2018-04-17', NULL, 'branch office', 'Tukang Gigi', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(30, 30, 'EMP-30', 'permanent', '2022-04-26', NULL, 'branch office', 'Karyawan Swasta', 'staff', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(31, 31, 'EMP-31', 'contract', '2023-05-02', NULL, 'head office', 'Tukang Sol Sepatu', 'staff', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(32, 32, 'EMP-32', 'permanent', '2018-07-20', NULL, 'head office', 'Perancang Busana', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(33, 33, 'EMP-33', 'contract', '2015-06-17', NULL, 'branch office', 'Akuntan', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(34, 34, 'EMP-34', 'contract', '2020-11-14', NULL, 'head office', 'Biarawati', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(35, 35, 'EMP-35', 'contract', '2015-05-25', NULL, 'branch office', 'Pengacara', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(36, 36, 'EMP-36', 'contract', '2023-04-15', NULL, 'branch office', 'Programmer', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(37, 37, 'EMP-37', 'contract', '2018-05-19', NULL, 'branch office', 'Belum / Tidak Bekerja', 'intern', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(38, 38, 'EMP-38', 'contract', '2022-01-18', NULL, 'branch office', 'Pegawai Negeri Sipil (PNS)', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(39, 39, 'EMP-39', 'probation', '2023-01-02', NULL, 'head office', 'Pramugari', 'staff', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(40, 40, 'EMP-40', 'contract', '2024-07-09', NULL, 'branch office', 'Ustaz / Mubaligh', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(41, 41, 'EMP-41', 'contract', '2022-07-23', NULL, 'branch office', 'Sopir', 'intern', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(42, 42, 'EMP-42', 'probation', '2019-04-24', NULL, 'head office', 'Tukang Kayu', 'staff', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(43, 43, 'EMP-43', 'probation', '2022-10-08', NULL, 'head office', 'Buruh Harian Lepas', 'director', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(44, 44, 'EMP-44', 'probation', '2025-01-16', NULL, 'head office', 'Pramusaji', 'manager', '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(45, 45, 'EMP-45', 'probation', '2021-11-14', NULL, 'head office', 'Penyiar Televisi', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(46, 46, 'EMP-46', 'permanent', '2019-04-08', NULL, 'head office', 'Nelayan / Perikanan', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(47, 47, 'EMP-47', 'permanent', '2015-04-09', NULL, 'head office', 'Tukang Batu', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(48, 48, 'EMP-48', 'internship', '2014-08-14', NULL, 'branch office', 'Penyelam', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(49, 49, 'EMP-49', 'permanent', '2023-09-16', NULL, 'head office', 'Penata Rias', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(50, 50, 'EMP-50', 'contract', '2022-06-09', NULL, 'head office', 'Penata Busana', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(51, 51, 'EMP-51', 'probation', '2018-09-27', NULL, 'head office', 'Dokter', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(52, 52, 'EMP-52', 'permanent', '2022-07-27', NULL, 'branch office', 'Tukang Las / Pandai Besi', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(53, 53, 'EMP-53', 'probation', '2015-12-07', NULL, 'branch office', 'Karyawan Swasta', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(54, 54, 'EMP-54', 'permanent', '2015-04-23', NULL, 'head office', 'Penata Busana', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(55, 55, 'EMP-55', 'internship', '2023-10-06', NULL, 'branch office', 'Akuntan', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(56, 56, 'EMP-56', 'probation', '2020-07-10', NULL, 'head office', 'Petani / Pekebun', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(57, 57, 'EMP-57', 'internship', '2021-12-02', NULL, 'branch office', 'Pilot', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(58, 58, 'EMP-58', 'contract', '2025-03-13', NULL, 'branch office', 'Penulis', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(59, 59, 'EMP-59', 'permanent', '2025-10-14', NULL, 'branch office', 'Buruh Tani / Perkebunan', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(60, 60, 'EMP-60', 'internship', '2023-01-08', NULL, 'branch office', 'Industri', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(61, 61, 'EMP-61', 'probation', '2020-11-18', NULL, 'branch office', 'Penyiar Televisi', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(62, 62, 'EMP-62', 'permanent', '2020-07-17', NULL, 'branch office', 'Karyawan BUMD', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(63, 63, 'EMP-63', 'contract', '2018-07-03', NULL, 'branch office', 'Wakil Presiden', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(64, 64, 'EMP-64', 'contract', '2020-05-02', NULL, 'head office', 'Buruh Tani / Perkebunan', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(65, 65, 'EMP-65', 'internship', '2020-05-26', NULL, 'branch office', 'Tukang Jahit', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(66, 66, 'EMP-66', 'probation', '2021-04-15', NULL, 'head office', 'Karyawan BUMN', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(67, 67, 'EMP-67', 'probation', '2022-11-11', NULL, 'head office', 'Pegawai Negeri Sipil (PNS)', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(68, 68, 'EMP-68', 'permanent', '2025-10-25', NULL, 'head office', 'Jaksa', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(69, 69, 'EMP-69', 'probation', '2021-05-07', NULL, 'branch office', 'Penata Busana', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(70, 70, 'EMP-70', 'internship', '2015-05-22', NULL, 'branch office', 'Pramugari', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(71, 71, 'EMP-71', 'permanent', '2018-01-03', NULL, 'branch office', 'Pendeta', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(72, 72, 'EMP-72', 'internship', '2018-01-17', NULL, 'head office', 'Kepala Desa', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(73, 73, 'EMP-73', 'internship', '2021-11-10', NULL, 'head office', 'Pegawai Negeri Sipil (PNS)', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(74, 74, 'EMP-74', 'permanent', '2014-11-20', NULL, 'branch office', 'Pramugari', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(75, 75, 'EMP-75', 'permanent', '2020-01-16', NULL, 'branch office', 'Tukang Jahit', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(76, 76, 'EMP-76', 'probation', '2024-03-26', NULL, 'branch office', 'Pialang', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(77, 77, 'EMP-77', 'contract', '2021-08-02', NULL, 'head office', 'Karyawan Honorer', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(78, 78, 'EMP-78', 'contract', '2022-09-05', NULL, 'branch office', 'Pramugari', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(79, 79, 'EMP-79', 'probation', '2023-08-06', NULL, 'head office', 'Peneliti', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(80, 80, 'EMP-80', 'contract', '2026-05-22', NULL, 'head office', 'Konstruksi', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(81, 81, 'EMP-81', 'permanent', '2017-11-28', NULL, 'head office', 'Nelayan / Perikanan', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(82, 82, 'EMP-82', 'probation', '2016-10-25', NULL, 'head office', 'Bidan', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(83, 83, 'EMP-83', 'internship', '2021-12-12', NULL, 'branch office', 'Mekanik', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(84, 84, 'EMP-84', 'contract', '2019-12-12', NULL, 'branch office', 'Wakil Presiden', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(85, 85, 'EMP-85', 'permanent', '2021-03-05', NULL, 'branch office', 'Buruh Tani / Perkebunan', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(86, 86, 'EMP-86', 'permanent', '2025-09-21', NULL, 'head office', 'Karyawan BUMN', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(87, 87, 'EMP-87', 'probation', '2020-05-15', NULL, 'branch office', 'Tukang Sol Sepatu', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(88, 88, 'EMP-88', 'permanent', '2022-09-07', NULL, 'branch office', 'Tukang Cukur', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(89, 89, 'EMP-89', 'contract', '2025-01-12', NULL, 'head office', 'Pramusaji', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(90, 90, 'EMP-90', 'probation', '2021-10-15', NULL, 'branch office', 'Konstruksi', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(91, 91, 'EMP-91', 'permanent', '2014-10-25', NULL, 'head office', 'Kepolisian RI (POLRI)', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(92, 92, 'EMP-92', 'internship', '2018-10-02', NULL, 'branch office', 'Biarawati', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(93, 93, 'EMP-93', 'probation', '2024-04-27', NULL, 'branch office', 'Belum / Tidak Bekerja', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(94, 94, 'EMP-94', 'permanent', '2026-05-31', NULL, 'head office', 'Pramusaji', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(95, 95, 'EMP-95', 'contract', '2016-01-22', NULL, 'head office', 'Tukang Las / Pandai Besi', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(96, 96, 'EMP-96', 'probation', '2023-06-22', NULL, 'head office', 'Notaris', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(97, 97, 'EMP-97', 'probation', '2017-12-31', NULL, 'head office', 'Wakil Presiden', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(98, 98, 'EMP-98', 'probation', '2015-08-12', NULL, 'head office', 'Kepolisian RI (POLRI)', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(99, 99, 'EMP-99', 'probation', '2024-01-28', NULL, 'branch office', 'Pialang', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(100, 100, 'EMP-100', 'internship', '2019-04-01', NULL, 'head office', 'Penata Rias', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(101, 101, 'EMP-101', 'probation', '2025-07-16', NULL, 'head office', 'Perangkat Desa', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(102, 102, 'EMP-102', 'internship', '2023-09-13', NULL, 'head office', 'Akuntan', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(103, 103, 'EMP-103', 'permanent', '2017-05-22', NULL, 'head office', 'Tukang Listrik', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(104, 104, 'EMP-104', 'internship', '2021-04-24', NULL, 'branch office', 'Pengacara', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(105, 105, 'EMP-105', 'probation', '2026-02-07', NULL, 'branch office', 'Penata Busana', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(106, 106, 'EMP-106', 'permanent', '2022-08-02', NULL, 'head office', 'Tabib', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(107, 107, 'EMP-107', 'permanent', '2018-04-07', NULL, 'branch office', 'Tukang Kayu', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(108, 108, 'EMP-108', 'internship', '2017-04-27', NULL, 'head office', 'Wakil Presiden', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(109, 109, 'EMP-109', 'permanent', '2015-08-24', NULL, 'head office', 'Karyawan Honorer', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(110, 110, 'EMP-110', 'probation', '2018-11-01', NULL, 'branch office', 'Masinis', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(111, 111, 'EMP-111', 'internship', '2021-05-21', NULL, 'branch office', 'Industri', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(112, 112, 'EMP-112', 'contract', '2026-03-10', NULL, 'head office', 'Mekanik', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(113, 113, 'EMP-113', 'internship', '2020-12-13', NULL, 'branch office', 'Desainer', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(114, 114, 'EMP-114', 'permanent', '2021-12-05', NULL, 'branch office', 'Kondektur', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(115, 115, 'EMP-115', 'probation', '2017-12-02', NULL, 'head office', 'Penata Rias', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(116, 116, 'EMP-116', 'contract', '2017-09-28', NULL, 'head office', 'Kondektur', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(117, 117, 'EMP-117', 'contract', '2020-10-20', NULL, 'branch office', 'Dokter', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(118, 118, 'EMP-118', 'contract', '2021-11-09', NULL, 'head office', 'Wiraswasta', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(119, 119, 'EMP-119', 'permanent', '2019-05-01', NULL, 'head office', 'Pemandu Wisata', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(120, 120, 'EMP-120', 'permanent', '2017-04-15', NULL, 'branch office', 'Pegawai Negeri Sipil (PNS)', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(121, 121, 'EMP-121', 'internship', '2018-07-24', NULL, 'head office', 'Wakil Presiden', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(122, 122, 'EMP-122', 'contract', '2017-06-30', NULL, 'head office', 'Penambang', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(123, 123, 'EMP-123', 'contract', '2022-09-23', NULL, 'head office', 'Buruh Tani / Perkebunan', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(124, 124, 'EMP-124', 'permanent', '2025-02-07', NULL, 'head office', 'Promotor Acara', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(125, 125, 'EMP-125', 'internship', '2018-07-14', NULL, 'head office', 'Pedagang', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(126, 126, 'EMP-126', 'probation', '2023-03-28', NULL, 'branch office', 'Tukang Kayu', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(127, 127, 'EMP-127', 'contract', '2020-04-24', NULL, 'head office', 'Peternak', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(128, 128, 'EMP-128', 'probation', '2018-09-04', NULL, 'branch office', 'Pramugari', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(129, 129, 'EMP-129', 'permanent', '2024-11-20', NULL, 'head office', 'Penyiar Radio', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(130, 130, 'EMP-130', 'internship', '2022-04-15', NULL, 'branch office', 'Perdagangan', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(131, 131, 'EMP-131', 'internship', '2024-08-28', NULL, 'branch office', 'Pelajar / Mahasiswa', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(132, 132, 'EMP-132', 'permanent', '2022-05-11', NULL, 'branch office', 'Apoteker', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(133, 133, 'EMP-133', 'internship', '2018-06-27', NULL, 'branch office', 'Tukang Cukur', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(134, 134, 'EMP-134', 'internship', '2017-09-24', NULL, 'head office', 'Pialang', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(135, 135, 'EMP-135', 'internship', '2018-12-31', NULL, 'head office', 'Guru', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(136, 136, 'EMP-136', 'internship', '2025-12-10', NULL, 'branch office', 'Penambang', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(137, 137, 'EMP-137', 'probation', '2026-05-30', NULL, 'branch office', 'Juru Masak', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(138, 138, 'EMP-138', 'internship', '2015-07-23', NULL, 'head office', 'Pengacara', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(139, 139, 'EMP-139', 'permanent', '2015-01-19', NULL, 'head office', 'Nahkoda', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(140, 140, 'EMP-140', 'contract', '2015-09-10', NULL, 'branch office', 'Apoteker', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(141, 141, 'EMP-141', 'internship', '2017-02-01', NULL, 'branch office', 'Ustaz / Mubaligh', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(142, 142, 'EMP-142', 'permanent', '2014-12-02', NULL, 'branch office', 'Wakil Presiden', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(143, 143, 'EMP-143', 'contract', '2017-12-29', NULL, 'head office', 'Programmer', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(144, 144, 'EMP-144', 'permanent', '2023-01-10', NULL, 'head office', 'Desainer', 'staff', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(145, 145, 'EMP-145', 'internship', '2024-11-04', NULL, 'branch office', 'Buruh Tani / Perkebunan', 'manager', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(146, 146, 'EMP-146', 'internship', '2024-05-21', NULL, 'branch office', 'Perancang Busana', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(147, 147, 'EMP-147', 'permanent', '2016-08-03', NULL, 'branch office', 'Guru', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(148, 148, 'EMP-148', 'internship', '2019-06-07', NULL, 'head office', 'Psikiater / Psikolog', 'intern', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(149, 149, 'EMP-149', 'contract', '2017-02-19', NULL, 'head office', 'Paraji', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(150, 150, 'EMP-150', 'permanent', '2022-03-16', NULL, 'branch office', 'Perawat', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(151, 151, 'EMP-151', 'internship', '2016-11-20', NULL, 'branch office', 'Kepolisian RI (POLRI)', 'director', '2024-06-11 07:19:41', '2024-06-11 07:19:41');
+
+-- Dumping structure for table dev_employee.employee_identity_addresses
+DROP TABLE IF EXISTS `employee_identity_addresses`;
+CREATE TABLE IF NOT EXISTS `employee_identity_addresses` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `employee_id` bigint unsigned NOT NULL,
+  `ktp` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postal_code` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `citizen_id_address` longtext COLLATE utf8mb4_unicode_ci,
+  `residential_address` longtext COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `employee_identity_addresses_employee_id_foreign` (`employee_id`),
+  CONSTRAINT `employee_identity_addresses_employee_id_foreign` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.employee_identity_addresses: ~151 rows (approximately)
+REPLACE INTO `employee_identity_addresses` (`id`, `employee_id`, `ktp`, `postal_code`, `citizen_id_address`, `residential_address`, `created_at`, `updated_at`) VALUES
+	(1, 1, '678123897123', '123444', 'Batam, Kepulauan Riau', NULL, '2024-06-11 07:18:31', '2024-06-11 07:19:03'),
+	(2, 2, '3314704307996930', '24664', 'Kpg. Bambu No. 294, Administrasi Jakarta Pusat 87408, Bengkulu', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(3, 3, '3516835904092925', '17748', 'Gg. Elang No. 151, Sibolga 78139, Sulsel', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(4, 4, '7317274411033872', '21267', 'Gg. Orang No. 508, Bogor 56144, Sumsel', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(5, 5, '9209831712169777', '77046', 'Jln. Qrisdoren No. 460, Jayapura 38135, Sultra', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(6, 6, '5208976205973510', '66720', 'Dk. Babakan No. 620, Magelang 51599, Kaltim', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(7, 7, '1209443103206298', '46548', 'Kpg. Bah Jaya No. 7, Tanjung Pinang 84303, Maluku', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(8, 8, '3319876510088643', '31112', 'Kpg. Baha No. 26, Tarakan 51228, Sulteng', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(9, 9, '7415761405179389', '28349', 'Kpg. Krakatau No. 214, Palembang 21653, DIY', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(10, 10, '7571311201166142', '84585', 'Gg. Bazuka Raya No. 543, Kotamobagu 33533, Babel', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(11, 11, '1609132308153855', '42648', 'Jr. Baranang Siang No. 827, Tasikmalaya 48377, Sulteng', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(12, 12, '5315993011130116', '45625', 'Dk. Bata Putih No. 625, Pariaman 27639, Sulteng', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(13, 13, '2101790210054273', '32037', 'Dk. Basuki Rahmat  No. 452, Yogyakarta 46580, Sulsel', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(14, 14, '3308815702140535', '57361', 'Jr. Camar No. 655, Sawahlunto 41352, Kalteng', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(15, 15, '6201095101027124', '99250', 'Dk. Gajah Mada No. 555, Banjar 34174, Aceh', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(16, 16, '1308121808027187', '30022', 'Jln. Sudirman No. 421, Banjarmasin 34659, Jambi', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(17, 17, '6106760112187281', '69213', 'Dk. Bak Air No. 961, Parepare 87710, Sultra', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(18, 18, '3277544805195985', '63878', 'Jr. Pasirkoja No. 725, Madiun 20016, Jatim', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(19, 19, '7471823010211588', '37285', 'Psr. Bahagia No. 830, Bitung 23309, Riau', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(20, 20, '7501131102088020', '47518', 'Jln. Yap Tjwan Bing No. 528, Sawahlunto 89323, Banten', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(21, 21, '1271904306964520', '45836', 'Psr. Rumah Sakit No. 204, Balikpapan 41428, NTT', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(22, 22, '3515952707225757', '23350', 'Kpg. Halim No. 552, Solok 56292, Jambi', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(23, 23, '1805632804219013', '85768', 'Psr. Batako No. 672, Pagar Alam 65948, Kalbar', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(24, 24, '7402246406086901', '10260', 'Ki. Sampangan No. 87, Kupang 23791, Bali', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(25, 25, '6206380802070057', '96906', 'Dk. Veteran No. 262, Tidore Kepulauan 62021, Kaltim', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(26, 26, '1708506712106750', '98714', 'Kpg. M.T. Haryono No. 725, Tomohon 18160, NTB', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(27, 27, '5106461311963630', '95304', 'Jln. Bakaru No. 263, Surabaya 23742, Pabar', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(28, 28, '7406465405983726', '80858', 'Ds. Banceng Pondok No. 773, Kediri 55485, Maluku', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(29, 29, '3101756808999899', '25683', 'Ki. Untung Suropati No. 893, Malang 57384, Kalteng', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(30, 30, '1221765003063499', '96383', 'Kpg. Mahakam No. 382, Ternate 39499, Sumbar', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(31, 31, '5271682601097952', '80798', 'Gg. Mahakam No. 314, Surakarta 62219, Kaltara', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(32, 32, '7312093103202244', '50458', 'Jr. Bah Jaya No. 87, Samarinda 14198, Sulut', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(33, 33, '2103864805052836', '36277', 'Jr. Baranangsiang No. 99, Dumai 62118, Sumut', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(34, 34, '1813644802181599', '45006', 'Jln. Bata Putih No. 352, Tangerang Selatan 52295, Jateng', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(35, 35, '7106342803086624', '13139', 'Ds. Baik No. 514, Administrasi Jakarta Pusat 47336, Kepri', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(36, 36, '6472862512209984', '73431', 'Ki. Tambun No. 623, Administrasi Jakarta Selatan 28321, Pabar', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(37, 37, '7308710212984282', '12179', 'Ki. Moch. Toha No. 325, Tegal 86062, Banten', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(38, 38, '7407232706167250', '17524', 'Jr. Ketandan No. 457, Tanjungbalai 80866, Jateng', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(39, 39, '7108365008994711', '85149', 'Jln. Jagakarsa No. 931, Kupang 96262, Lampung', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(40, 40, '9210935712078154', '99444', 'Psr. K.H. Wahid Hasyim (Kopo) No. 718, Bontang 95592, Sulut', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(41, 41, '3327540802965144', '11743', 'Jr. Pasir Koja No. 401, Tarakan 47037, Bali', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(42, 42, '3276246103064714', '17230', 'Ki. Eka No. 457, Banda Aceh 25806, Lampung', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(43, 43, '6101861910228946', '86230', 'Gg. BKR No. 239, Kediri 75511, Sulut', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(44, 44, '6308524808941791', '97656', 'Ki. Pasirkoja No. 389, Pariaman 25402, Jatim', NULL, '2024-06-11 07:19:40', '2024-06-11 07:19:40'),
+	(45, 45, '7324235409130455', '94451', 'Dk. Suryo Pranoto No. 85, Parepare 56591, Sultra', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(46, 46, '8203900602959149', '69371', 'Jln. Kyai Gede No. 247, Jayapura 76416, Kaltim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(47, 47, '7408436108022820', '33993', 'Psr. Dr. Junjunan No. 879, Bima 84338, Kaltim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(48, 48, '6371585901130143', '21348', 'Ds. Jaksa No. 403, Pagar Alam 36014, Gorontalo', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(49, 49, '3514744105050760', '30595', 'Ki. Baya Kali Bungur No. 380, Salatiga 81576, Jatim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(50, 50, '1218224712119233', '82214', 'Psr. Yohanes No. 660, Gorontalo 25983, Sulut', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(51, 51, '7301322212166616', '80888', 'Ds. Abdul No. 626, Cilegon 23056, Sumbar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(52, 52, '9127661712235334', '69615', 'Ds. Baranang Siang No. 591, Bandung 91995, Aceh', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(53, 53, '6205696305059421', '90617', 'Jr. Padma No. 635, Surabaya 43277, Jambi', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(54, 54, '9107381903221378', '42573', 'Gg. Bawal No. 726, Kupang 51938, Lampung', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(55, 55, '9114511701083580', '32276', 'Jln. Abdullah No. 993, Sawahlunto 29527, Sulteng', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(56, 56, '3309586903199097', '71802', 'Ds. Teuku Umar No. 108, Lubuklinggau 22531, NTB', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(57, 57, '3507936009209047', '74616', 'Dk. Barat No. 556, Batam 95968, Kaltara', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(58, 58, '3529596006098640', '13622', 'Ki. Baung No. 693, Parepare 84231, Sultra', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(59, 59, '9202835711225263', '63150', 'Ds. Gambang No. 976, Gorontalo 60163, DKI', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(60, 60, '6106452107952623', '65574', 'Kpg. Batako No. 150, Makassar 99814, Sulsel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(61, 61, '3578486709112111', '25427', 'Gg. Kali No. 828, Pangkal Pinang 20610, Lampung', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(62, 62, '6502835506192456', '27842', 'Ki. Gedebage Selatan No. 736, Palembang 90781, Babel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(63, 63, '6112931710091454', '60606', 'Kpg. Bambon No. 398, Subulussalam 52407, Sumut', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(64, 64, '8108230610946909', '52210', 'Psr. Bagonwoto  No. 488, Bau-Bau 90962, Jatim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(65, 65, '3313162610217871', '28370', 'Psr. M.T. Haryono No. 661, Jayapura 90485, Aceh', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(66, 66, '7412422607111577', '92328', 'Dk. Agus Salim No. 655, Palembang 79051, Papua', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(67, 67, '7310864711144230', '62974', 'Kpg. Baabur Royan No. 739, Bontang 49804, NTB', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(68, 68, '7405580204209743', '66409', 'Psr. Sukajadi No. 624, Tual 43016, Kalteng', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(69, 69, '7411840411217739', '65041', 'Jln. Reksoninten No. 739, Tangerang Selatan 64538, Babel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(70, 70, '9207495504115320', '82767', 'Ds. Ciumbuleuit No. 381, Madiun 84848, Sultra', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(71, 71, '8271490706054640', '96524', 'Psr. Dahlia No. 661, Tebing Tinggi 84563, Pabar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(72, 72, '1205644202972749', '56922', 'Ki. Barat No. 100, Tegal 42353, Sultra', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(73, 73, '3401677108986135', '57074', 'Jr. Bakti No. 509, Sorong 10674, Jabar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(74, 74, '9124760902992931', '58407', 'Kpg. PHH. Mustofa No. 567, Serang 44155, Bengkulu', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(75, 75, '5316084904956987', '92115', 'Ds. Lumban Tobing No. 517, Tomohon 83083, Jatim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(76, 76, '3210116211008916', '79652', 'Jr. Casablanca No. 891, Semarang 62138, Kaltim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(77, 77, '1771941308109010', '54524', 'Jr. Tubagus Ismail No. 564, Palembang 91528, NTB', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(78, 78, '3573126502999640', '72369', 'Dk. Hayam Wuruk No. 290, Mataram 23521, Sumbar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(79, 79, '7502961605041561', '59496', 'Dk. Wahidin No. 549, Batu 17613, NTT', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(80, 80, '7326880409136213', '71420', 'Ki. Otista No. 659, Langsa 95749, Papua', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(81, 81, '5107120903086807', '19155', 'Ds. Jamika No. 722, Lubuklinggau 61092, Kepri', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(82, 82, '6309816407052363', '73721', 'Gg. Kartini No. 925, Subulussalam 70691, Pabar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(83, 83, '7318425507138937', '18754', 'Kpg. Raden Saleh No. 106, Binjai 54542, Kaltara', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(84, 84, '1220535106218304', '70094', 'Ds. Cemara No. 650, Blitar 27825, DKI', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(85, 85, '5319165405196519', '73106', 'Kpg. Sudiarto No. 785, Ambon 57867, Jambi', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(86, 86, '1274410810199148', '44858', 'Gg. Otista No. 863, Serang 62180, Kepri', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(87, 87, '1905880210072393', '89261', 'Dk. Jend. A. Yani No. 551, Subulussalam 14193, Sultra', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(88, 88, '1303791701950356', '41394', 'Dk. Orang No. 162, Banjarbaru 61459, Babel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(89, 89, '8105842410000408', '68459', 'Kpg. Siliwangi No. 814, Palembang 27801, Sulteng', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(90, 90, '1172434904995402', '81905', 'Ki. Setia Budi No. 931, Pekanbaru 60451, Jateng', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(91, 91, '2101635606164251', '49671', 'Kpg. Warga No. 311, Binjai 94189, Sulut', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(92, 92, '1309731710132771', '46803', 'Jr. Taman No. 514, Sorong 96993, NTB', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(93, 93, '7602195210070013', '74978', 'Ki. B.Agam Dlm No. 775, Tebing Tinggi 10649, Banten', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(94, 94, '7212376712987231', '50791', 'Dk. Qrisdoren No. 256, Pematangsiantar 35356, NTB', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(95, 95, '3312201502087125', '29832', 'Jln. Cikutra Barat No. 785, Administrasi Jakarta Selatan 37670, Bali', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(96, 96, '1310992703184747', '50447', 'Jr. Cihampelas No. 1, Palopo 86712, Sulut', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(97, 97, '8104582610162241', '80231', 'Dk. Pahlawan No. 149, Madiun 44231, Kaltim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(98, 98, '1307551801132584', '37500', 'Ds. Kyai Gede No. 115, Payakumbuh 94066, Babel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(99, 99, '9111124910099035', '65883', 'Jln. Cikutra Timur No. 377, Lubuklinggau 96604, Babel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(100, 100, '1872971210223052', '37725', 'Jr. Bakin No. 195, Gunungsitoli 23398, Jabar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(101, 101, '1306926602081798', '26524', 'Ki. Mulyadi No. 206, Langsa 49308, Maluku', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(102, 102, '6271896108994839', '72291', 'Dk. Dipatiukur No. 283, Yogyakarta 11615, Bali', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(103, 103, '1171900101953783', '43813', 'Jln. Perintis Kemerdekaan No. 265, Lubuklinggau 94505, Kepri', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(104, 104, '7203344606058169', '16971', 'Psr. Astana Anyar No. 492, Administrasi Jakarta Utara 60755, Jabar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(105, 105, '5302940108152024', '81755', 'Psr. Jend. A. Yani No. 925, Administrasi Jakarta Utara 88455, Sumut', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(106, 106, '7304082812189093', '22797', 'Jln. Nanas No. 556, Bandar Lampung 29107, Jambi', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(107, 107, '3323510911985547', '75042', 'Dk. Badak No. 837, Singkawang 96069, Banten', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(108, 108, '3517095006098903', '71773', 'Jr. Cikutra Timur No. 322, Lubuklinggau 63086, Aceh', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(109, 109, '7208184105143991', '47517', 'Jr. Sentot Alibasa No. 962, Prabumulih 37332, Sulbar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(110, 110, '7373855112006876', '72486', 'Dk. Suryo Pranoto No. 224, Administrasi Jakarta Utara 50436, Kalteng', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(111, 111, '1210921604037761', '54147', 'Dk. Dago No. 217, Bandung 83388, Sulteng', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(112, 112, '1903804709995004', '69514', 'Kpg. Radio No. 217, Bukittinggi 43163, NTT', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(113, 113, '3201113105978652', '46627', 'Kpg. Wahidin No. 379, Banjar 46724, Jatim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(114, 114, '5320056507963247', '58035', 'Psr. Basudewo No. 710, Palu 49474, Jateng', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(115, 115, '6411091003982273', '16211', 'Jln. Bahagia  No. 91, Cirebon 10358, Kepri', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(116, 116, '1107906106025488', '47651', 'Dk. Yoga No. 877, Solok 50807, Sulbar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(117, 117, '1309043012167023', '99719', 'Gg. Halim No. 201, Gorontalo 79866, Aceh', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(118, 118, '7210722506943041', '42042', 'Kpg. Juanda No. 943, Semarang 38688, Jatim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(119, 119, '1813403107020780', '64359', 'Ds. Thamrin No. 921, Madiun 37916, Bengkulu', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(120, 120, '6103191907141331', '42931', 'Gg. Otista No. 938, Bau-Bau 50938, Sumsel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(121, 121, '3507661007106664', '62037', 'Jln. Basuki No. 515, Banjarmasin 16216, Sumbar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(122, 122, '5301532406965590', '75420', 'Psr. Katamso No. 481, Pontianak 57376, Lampung', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(123, 123, '3673141602005907', '74998', 'Jr. Babadak No. 174, Surabaya 73514, Papua', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(124, 124, '1209262105096018', '95986', 'Psr. Baung No. 400, Kotamobagu 71763, Sumut', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(125, 125, '3514142107039742', '33834', 'Jr. Wahid Hasyim No. 813, Metro 92424, Sumut', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(126, 126, '6411777112054986', '91188', 'Gg. Peta No. 100, Administrasi Jakarta Utara 17242, NTT', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(127, 127, '1216142312129621', '26816', 'Jln. Wahid No. 190, Padang 77634, Babel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(128, 128, '3172756812212432', '71778', 'Psr. Urip Sumoharjo No. 961, Pariaman 33933, DKI', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(129, 129, '3218930701155584', '99697', 'Jr. Sugiyopranoto No. 84, Cilegon 85227, Banten', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(130, 130, '1212976605090138', '10834', 'Ki. Rajawali Timur No. 723, Bandung 84014, Kaltim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(131, 131, '9211591503052671', '70910', 'Kpg. Ki Hajar Dewantara No. 41, Denpasar 39431, Malut', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(132, 132, '1172566208999130', '35319', 'Gg. Bank Dagang Negara No. 256, Cirebon 41384, DIY', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(133, 133, '3515206711057266', '16323', 'Gg. Rajiman No. 189, Lubuklinggau 59360, Sumbar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(134, 134, '5305530907966086', '59348', 'Gg. Basmol Raya No. 779, Batam 26862, Kalbar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(135, 135, '1906000609960103', '48194', 'Ki. Basoka Raya No. 177, Bau-Bau 38390, Sumbar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(136, 136, '1311866701183006', '94170', 'Ki. Banal No. 641, Kediri 59342, Gorontalo', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(137, 137, '3272404204204941', '26507', 'Ki. Sadang Serang No. 31, Administrasi Jakarta Pusat 18357, Kaltim', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(138, 138, '1271424805017545', '77576', 'Gg. Basoka No. 884, Batam 53515, Babel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(139, 139, '3505906612083901', '93852', 'Ki. Basket No. 64, Tual 36900, Sulsel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(140, 140, '6401880108086510', '97445', 'Kpg. Suprapto No. 716, Solok 73424, Sulbar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(141, 141, '1803312607161929', '54837', 'Jln. Camar No. 320, Serang 87109, Kalsel', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(142, 142, '7204356811112902', '32692', 'Kpg. Nangka No. 666, Prabumulih 13541, Papua', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(143, 143, '8105004603993977', '12852', 'Jr. Kyai Mojo No. 258, Kediri 10998, DIY', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(144, 144, '7210275102151536', '20521', 'Ki. Fajar No. 952, Padangsidempuan 88597, Jateng', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(145, 145, '7110760408124717', '73405', 'Ki. Casablanca No. 721, Batu 73649, DIY', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(146, 146, '7317231406108486', '20430', 'Ds. Teuku Umar No. 939, Subulussalam 90393, Riau', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(147, 147, '1405495410039638', '29378', 'Ki. Baha No. 844, Magelang 92886, Maluku', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(148, 148, '3212520102127576', '80447', 'Dk. Nangka No. 314, Yogyakarta 73622, Gorontalo', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(149, 149, '7211146105021128', '13252', 'Ds. Soekarno Hatta No. 948, Padang 87906, Aceh', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(150, 150, '7605235410004842', '49006', 'Ki. Suryo No. 10, Subulussalam 21994, Jabar', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41'),
+	(151, 151, '9212844503238325', '10346', 'Psr. Salatiga No. 646, Jayapura 76522, Gorontalo', NULL, '2024-06-11 07:19:41', '2024-06-11 07:19:41');
+
+-- Dumping structure for table dev_employee.failed_jobs
+DROP TABLE IF EXISTS `failed_jobs`;
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.failed_jobs: ~0 rows (approximately)
+
+-- Dumping structure for table dev_employee.jobs
+DROP TABLE IF EXISTS `jobs`;
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint unsigned NOT NULL,
+  `reserved_at` int unsigned DEFAULT NULL,
+  `available_at` int unsigned NOT NULL,
+  `created_at` int unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `jobs_queue_index` (`queue`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.jobs: ~0 rows (approximately)
+
+-- Dumping structure for table dev_employee.job_batches
+DROP TABLE IF EXISTS `job_batches`;
+CREATE TABLE IF NOT EXISTS `job_batches` (
+  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_jobs` int NOT NULL,
+  `pending_jobs` int NOT NULL,
+  `failed_jobs` int NOT NULL,
+  `failed_job_ids` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `options` mediumtext COLLATE utf8mb4_unicode_ci,
+  `cancelled_at` int DEFAULT NULL,
+  `created_at` int NOT NULL,
+  `finished_at` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.job_batches: ~0 rows (approximately)
+
+-- Dumping structure for table dev_employee.migrations
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.migrations: ~0 rows (approximately)
+REPLACE INTO `migrations` (`id`, `migration`, `batch`) VALUES
+	(1, '0001_01_01_000000_create_users_table', 1),
+	(2, '0001_01_01_000001_create_cache_table', 1),
+	(3, '0001_01_01_000002_create_jobs_table', 1),
+	(4, '2024_06_11_022822_create_employees_table', 1),
+	(5, '2024_06_11_024447_create_employee_identity_addresses_table', 1),
+	(6, '2024_06_11_024958_create_employee_employments_table', 1);
+
+-- Dumping structure for table dev_employee.password_reset_tokens
+DROP TABLE IF EXISTS `password_reset_tokens`;
+CREATE TABLE IF NOT EXISTS `password_reset_tokens` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.password_reset_tokens: ~0 rows (approximately)
+
+-- Dumping structure for table dev_employee.sessions
+DROP TABLE IF EXISTS `sessions`;
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint unsigned DEFAULT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text COLLATE utf8mb4_unicode_ci,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_activity` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sessions_user_id_index` (`user_id`),
+  KEY `sessions_last_activity_index` (`last_activity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.sessions: ~1 rows (approximately)
+REPLACE INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+	('1xQTqWu3OKsc2yXHgcBNsNQuB1NSNmTVjI0lWJdk', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiQXBsTDVFZW5VZ09BZlg5U2FGb1piVDBCdVhyQmZKTEhaeVd5RndncCI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNzoiaHR0cDovL2VtcGxveWVlLnRlc3QvZW1wbG95ZWU/cGFnZT0yMCI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIwOiJodHRwOi8vZW1wbG95ZWUudGVzdCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1718116660);
+
+-- Dumping structure for table dev_employee.users
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table dev_employee.users: ~1 rows (approximately)
+REPLACE INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, 'Administrator', 'admin@employee.com', NULL, '$2y$12$pt/1DcHp3A7ue0QBOygZIe12OVm/lPjyaT5B4in3KDYw1XLCzplrW', NULL, '2024-06-11 07:14:34', '2024-06-11 07:14:34');
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
